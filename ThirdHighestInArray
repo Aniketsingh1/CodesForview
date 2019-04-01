@@ -1,0 +1,21 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+class CandidateCode
+{
+    static void Main(String[] args)
+    {
+        //Write code here
+        int i = Convert.ToInt32(Console.ReadLine());
+        int[] arr = new int[i];
+        for (int j = 0; j < arr.Length; j++)
+        {
+            arr[j] = Convert.ToInt32(Console.ReadLine());
+        }
+        int val = arr.Max();
+        int thirdHighest = (from number in arr orderby number descending select number).Distinct().Skip(2).First();
+        Console.ReadLine();
+
+    }
+}
