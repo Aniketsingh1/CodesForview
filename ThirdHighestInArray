@@ -6,7 +6,7 @@ class CandidateCode
 {
     static void Main(String[] args)
     {
-        //Write code here
+
         int i = Convert.ToInt32(Console.ReadLine());
         int[] arr = new int[i];
         for (int j = 0; j < arr.Length; j++)
