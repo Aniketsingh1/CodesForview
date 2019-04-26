@@ -2,67 +2,59 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Collections;
 class CandidateCode
-{
-    public static string CheckTheWinningChance(int[] arr1, int[] arr2)
     {
-
-        Array.Sort(arr1);
-        Array.Sort(arr2);
-        int a = 0, b = 0;
-        int[] checkstatus = new int[arr1.Length];
-
-        for (int i = 0; i < arr1.Length; i++)
+        static void Main(String[] args)
         {
-            a = arr1[i];
-            b = arr2.ElementAt(i);
-            bool retval = findnext(a, b);
-            checkstatus[i] = Convert.ToInt32(retval);
+            //Write code here
+            //ArrayList mylist = new ArrayList();
+            string printval = "";
+            int noOftestCase = int.Parse(Console.ReadLine().Trim());
+            string[] mylist = new String[noOftestCase];
+            for (int i = 0; i < noOftestCase; i++)
+            {
+                int noOfParticipants = int.Parse(Console.ReadLine().Trim());                
+                int[] array1 = Console.ReadLine().TrimEnd().Split(' ').Select(n => Convert.ToInt32(n)).ToArray();
+                int[] array2 = Console.ReadLine().TrimEnd().Split(' ').Select(n => Convert.ToInt32(n)).ToArray();                
+                printval = CheckTheWinningChance(array1, array2);
+                mylist[i]=printval;
+
+            }
+            foreach (var item in mylist)
+                Console.WriteLine(item.ToString());            
         }
 
-        if (checkstatus.Contains(0))
-            return "LOSE";
-        else
-            return "WIN";
-
-
-    }
-    static bool findnext(int o, int l)
-    {
-        if (o < l)
-            return true;
-        else
-            return false;
-    }
-
-    static void Main(String[] args)
-    {
-        //Write code here
-        ArrayList mylist = new ArrayList();
-        string printval = "";
-        int noOftestCase = Convert.ToInt32(Console.ReadLine());
-        for (int i = 0; i < noOftestCase; i++)
+        public static string CheckTheWinningChance(int[] arr1, int[] arr2)
         {
-            int noOfParticipants = Convert.ToInt32(Console.ReadLine());
-            int[] array1 = new int[noOfParticipants];
-            int[] array2 = new int[noOfParticipants];
-            for (int j = 0; j < array1.Length; j++)
+
+            Array.Sort(arr1);
+            Array.Sort(arr2);
+            int a = 0, b = 0;
+            int[] checkstatus = new int[arr1.Length];
+
+            for (int i = 0; i < arr1.Length; i++)
             {
-                array1[j] = Convert.ToInt32(Console.ReadLine());
+                a = arr1[i];
+                b = arr2.ElementAt(i);
+                bool retval = findnext(a, b);
+                checkstatus[i] = Convert.ToInt32(retval);
             }
-            for (int k = 0; k < array2.Length; k++)
-            {
-                array2[k] = Convert.ToInt32(Console.ReadLine());
-            }
-            printval = CheckTheWinningChance(array1, array2);
-            mylist.Add(printval);
+
+            if (checkstatus.Contains(0))
+                return "LOSE";
+            else
+                return "WIN";
+
 
         }
-        foreach (var item in mylist)
-            Console.WriteLine(item.ToString());
-        Console.ReadLine();
+        static bool findnext(int o, int l)
+        {
+            if (o < l)
+                return true;
+            else
+                return false;
+        }
+
+        
 
     }
-
-}
