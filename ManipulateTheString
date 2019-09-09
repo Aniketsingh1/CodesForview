@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class CandidateCode
+{
+
+    public static string ManipulateTheString(string param)
+    {
+        char a=' ', b=' ';
+        char[] charArray = param.ToCharArray();
+        if (charArray.Length > 2)
+        {
+             a = (from ch in charArray select ch).Skip(2).First();
+        }
+        if (charArray.Length > 4)
+        {
+             b = (from ch in charArray select ch).Skip(4).First();
+        }
+
+        param = param.Replace(a,char.ToUpper(a));
+        param = param.Replace(b,' ');
+
+
+        return param;
+    }
+   
+
+    static void Main(String[] args)
+    {
+        string word = Console.ReadLine().Trim();
+        string retWord = ManipulateTheString(word);
+        Console.Write(retWord);
+      
+        Console.ReadLine();
+    }
+
+}
+
