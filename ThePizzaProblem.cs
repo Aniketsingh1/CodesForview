@@ -14,8 +14,13 @@ class CandidateCode
         List<string> dataList = new List<string>();
         foreach (var key in param)
         {
-            var value = key["toppings"][0];
-            dataList.Add(value);// Add the toppings to a list.
+
+            var value = key["toppings"];
+            foreach (var val in value)
+            {
+                dataList.Add(val);
+            }
+
         }
         var uniqueToopings = new HashSet<string>(dataList);// Pick out the unique combination of toppings to compare.
         foreach (var topping in uniqueToopings)
